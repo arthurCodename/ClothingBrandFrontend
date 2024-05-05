@@ -298,90 +298,90 @@ const ItemPage = (props) => {
             <div className="color-slct">
               <span className="clr-text">SELECT A COLOUR:</span>
               <div className="colours-grid">
-                <button
+                <input
                   className="box"
-                  type="button"
+                  type="input"
                   style={{ background: "black" }}
                   onClick={() => setColor("STEEL BLACK")}
-                ></button>
-                <button
+                ></input>
+                <input
                   className="box"
-                  type="button"
+                  type="input"
                   style={{ background: "white" }}
                   onClick={() => setColor("SILK WHITE")}
-                ></button>
-                <button
+                ></input>
+                <input
                   className="box"
-                  type="button"
+                  type="input"
                   style={{ background: "gray" }}
                   onClick={() => setColor("SILVER GRAY")}
-                ></button>
-                <button
+                ></input>
+                <input
                   className="box"
-                  type="button"
+                  type="input"
                   style={{ background: "green" }}
                   onClick={() => setColor("OLIVE GREEN")}
-                ></button>
-                <button
+                ></input>
+                <input
                   className="box"
-                  type="button"
+                  type="input"
                   style={{ background: "brown" }}
                   onClick={() => setColor("BURNT UMBER")}
-                ></button>
-                <button
+                ></input>
+                <input
                   className="box"
-                  type="button"
+                  type="input"
                   style={{ background: "purple" }}
                   onClick={() => setColor("INDIGO PURPLE")}
-                ></button>
+                ></input>
               </div>
             </div>
 
             <div className="color-slct">
               <span className="clr-text">SELECT A SIZE:</span>
               <div className="colours-grid">
-                <button
+                <input
                   className="box"
-                  type="button"
+                  type="input"
                   onClick={() => setSize("XS")}
                 >
                   XS
-                </button>
-                <button
+                </input>
+                <input
                   className="box"
-                  type="button"
+                  type="input"
                   onClick={() => setSize("S")}
                 >
                   S
-                </button>
-                <button
+                </input>
+                <input
                   className="box"
-                  type="button"
+                  type="input"
                   onClick={() => setSize("M")}
                 >
                   M
-                </button>
-                <button
+                </input>
+                <input
                   className="box"
-                  type="button"
+                  type="input"
                   onClick={() => setSize("L")}
                 >
                   L
-                </button>
-                <button
+                </input>
+                <input
                   className="box"
-                  type="button"
+                  type="input"
                   onClick={() => setSize("XL")}
                 >
                   XL
-                </button>
-                <button
+                </input>
+                <input
                   className="box"
-                  type="button"
+                  type="input"
                   onClick={() => setSize("XXL")}
                 >
                   XXL
-                </button>
+                </input>
               </div>
             </div>
             <div className="add-btn" onClick={() => AddToCart(itemData)}>
