@@ -155,13 +155,14 @@ const CartStyles = styled.div`
     justify-content: center;
     align-items: center;
   }
+
   @media screen and (max-width: 476px) {
     .cart-ctnr {
       width: 100%;
     }
-  }
-
-  @media screen and (max-width: 476px) {
+    .cart-pstn {
+      width: 100%;
+    }
     .cart-item-price {
       grid-column: 2 / span 2;
       grid-row: 4;
@@ -179,7 +180,7 @@ const Cart = (props) => {
       const userAdded = props.userLogged()._id;
       const data = { _id: _id, userAdded: userAdded };
       axios
-        .post("http://localhost:3001/deletefromCart", data)
+        .post("https://clothingbrandbackend.onrender.com/deletefromCart", data)
         .then((result) => console.log(result))
         .catch((err) => console.log(err));
       getAllCartItems();
@@ -191,7 +192,11 @@ const Cart = (props) => {
       if (cartitem._id === _id && e.target.id === "plus") {
         const quantity1 = ++cartitem.quantity;
         axios
-          .post("http://localhost:3001/updateQuantity", cartitem, quantity1)
+          .post(
+            "https://clothingbrandbackend.onrender.com/updateQuantity",
+            cartitem,
+            quantity1
+          )
           .then(() => console.log("hello"));
         getAllCartItems();
         return {
@@ -201,7 +206,11 @@ const Cart = (props) => {
       } else if (cartitem._id === _id && e.target.id === "minus") {
         const quantity2 = --cartitem.quantity;
         axios
-          .post("http://localhost:3001/updateQuantity", cartitem, quantity2)
+          .post(
+            "https://clothingbrandbackend.onrender.com/updateQuantity",
+            cartitem,
+            quantity2
+          )
           .then(() => console.log("hello"));
         getAllCartItems();
         return {
@@ -218,13 +227,17 @@ const Cart = (props) => {
     let userId = props.userLogged()._id;
     console.log(userId);
     axios
-      .post("http://localhost:3001/getCartItems", { userId })
+      .post("https://clothingbrandbackend.onrender.com/getCartItems", {
+        userId,
+      })
       .then((items) => setcartItems(items.data))
 
       .catch((err) => console.log("hello " + err));
 
     axios
-      .post("http://localhost:3001/getCartItemsPrice", { userId })
+      .post("https://clothingbrandbackend.onrender.com/getCartItemsPrice", {
+        userId,
+      })
       .then((price) => setCost(price.data))
       .catch((err) => console.log(err));
   }, [0]);
@@ -247,7 +260,7 @@ const Cart = (props) => {
     setcartItems(cartItems);
     console.log(cartItems);
     await axios
-      .post("http://localhost:3001/addtoOrders", cartItems)
+      .post("https://clothingbrandbackend.onrender.com/addtoOrders", cartItems)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };

@@ -249,7 +249,7 @@ const ItemPage = (props) => {
       };
       console.log(props.userLogged());
       axios
-        .post("http://localhost:3001/addtoCart", moddedProduct)
+        .post("https://clothingbrandbackend.onrender.com/addtoCart", moddedProduct)
         .then((result) => console.log(result))
         .catch((err) => console.log(err));
       window.dispatchEvent(new Event("storage1"));

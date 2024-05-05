@@ -177,12 +177,16 @@ const UserProfile = (props) => {
     const userId = props.userLogged()._id;
 
     axios
-      .post("http://localhost:3001/getUserOrders", { userId: userId })
+      .post("https://clothingbrandbackend.onrender.com/getUserOrders", {
+        userId: userId,
+      })
       .then((res) => setOrder(res.data))
 
       .catch((err) => console.log(err));
     axios
-      .post("http://localhost:3001/getOrderItemsPrice", { userId: userId })
+      .post("https://clothingbrandbackend.onrender.com/getOrderItemsPrice", {
+        userId: userId,
+      })
       .then((res) => setTotal(res.data))
 
       .catch((err) => console.log(err));

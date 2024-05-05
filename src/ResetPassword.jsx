@@ -69,7 +69,7 @@ const ResetPassword = (props) => {
 
   const emailSend = () => {
     axios
-      .post("http://localhost:3001/forgotPassword", {
+      .post("https://clothingbrandbackend.onrender.com/forgotPassword", {
         userEmail: userEmail,
       })
       .then((res) => console.log(res))

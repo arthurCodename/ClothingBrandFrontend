@@ -203,7 +203,7 @@ const LogInSignUp = (props) => {
     console.log(userEmail + "  " + userPassword + "  " + userCountry);
 
     axios
-      .post("http://localhost:3001/registerUser", {
+      .post("https://clothingbrandbackend.onrender.com/registerUser", {
         userEmail,
         userFirstName,
         userLastName,
@@ -217,7 +217,7 @@ const LogInSignUp = (props) => {
 
   const handleLogSubmit = async () => {
     await axios
-      .post("http://localhost:3001/logUser", { userEmail, userPassword })
+      .post("https://clothingbrandbackend.onrender.com/logUser", { userEmail, userPassword })
       .then((user) => setUser(user.data))
 
       .catch((err) => console.log(err));

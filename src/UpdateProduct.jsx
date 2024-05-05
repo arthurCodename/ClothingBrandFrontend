@@ -156,7 +156,10 @@ const UpdateProduct = (props) => {
     console.log(product);
     const moddedProduct = { ...product };
     axios
-      .post("http://localhost:3001/updateProduct", moddedProduct)
+      .post(
+        "https://clothingbrandbackend.onrender.com/updateProduct",
+        moddedProduct
+      )
       .then((res) => console.log(res))
       .catch((error) => console.log(error));
   };

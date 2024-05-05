@@ -98,7 +98,7 @@ const PasswordReset = () => {
 
   const ChangePassword = () => {
     if (password === confirmPassword) {
-      const axiosURL = `http://localhost:3001/password-reset/${userId}/${token}`;
+      const axiosURL = `https://clothingbrandbackend.onrender.com/password-reset/${userId}/${token}`;
       console.log(axiosURL);
       axios
         .post(`${axiosURL}`, {

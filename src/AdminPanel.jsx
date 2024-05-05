@@ -197,7 +197,7 @@ const ItemsDisplay = (props) => {
 
   const DeleteItem = (item) => {
     axios
-      .post("http://localhost:3001/deleteProduct", item)
+      .post("https://clothingbrandbackend.onrender.com/deleteProduct", item)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
 
@@ -265,7 +265,7 @@ const AdminPanel = (props) => {
   useEffect(() => {
     console.log(data);
     axios
-      .post("http://localhost:3001/getUsers")
+      .post("https://clothingbrandbackend.onrender.com/getUsers")
       .then((res) => setUsers(res.data))
       .catch((err) => console.log(err));
 
@@ -275,14 +275,14 @@ const AdminPanel = (props) => {
 
   const getProducts = () => {
     axios
-      .post("http://localhost:3001/getProducts")
+      .post("https://clothingbrandbackend.onrender.com/getProducts")
       .then((res) => setItems(res.data))
       .catch((err) => console.log(err));
   };
 
   const getOrders = () => {
     axios
-      .post("http://localhost:3001/getOrders")
+      .post("https://clothingbrandbackend.onrender.com/getOrders")
       .then((res) => setOrders(res.data))
       .catch((err) => console.log(err));
   };
