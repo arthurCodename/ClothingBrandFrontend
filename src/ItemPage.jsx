@@ -300,31 +300,37 @@ const ItemPage = (props) => {
               <div className="colours-grid">
                 <button
                   className="box"
+                  type="button"
                   style={{ background: "black" }}
                   onClick={() => setColor("STEEL BLACK")}
                 ></button>
                 <button
                   className="box"
+                  type="button"
                   style={{ background: "white" }}
                   onClick={() => setColor("SILK WHITE")}
                 ></button>
                 <button
                   className="box"
+                  type="button"
                   style={{ background: "gray" }}
                   onClick={() => setColor("SILVER GRAY")}
                 ></button>
                 <button
                   className="box"
+                  type="button"
                   style={{ background: "green" }}
                   onClick={() => setColor("OLIVE GREEN")}
                 ></button>
                 <button
                   className="box"
+                  type="button"
                   style={{ background: "brown" }}
                   onClick={() => setColor("BURNT UMBER")}
                 ></button>
                 <button
                   className="box"
+                  type="button"
                   style={{ background: "purple" }}
                   onClick={() => setColor("INDIGO PURPLE")}
                 ></button>
@@ -334,22 +340,46 @@ const ItemPage = (props) => {
             <div className="color-slct">
               <span className="clr-text">SELECT A SIZE:</span>
               <div className="colours-grid">
-                <button className="box" onClick={() => setSize("XS")}>
+                <button
+                  className="box"
+                  type="button"
+                  onClick={() => setSize("XS")}
+                >
                   XS
                 </button>
-                <button className="box" onClick={() => setSize("S")}>
+                <button
+                  className="box"
+                  type="button"
+                  onClick={() => setSize("S")}
+                >
                   S
                 </button>
-                <button className="box" onClick={() => setSize("M")}>
+                <button
+                  className="box"
+                  type="button"
+                  onClick={() => setSize("M")}
+                >
                   M
                 </button>
-                <button className="box" onClick={() => setSize("L")}>
+                <button
+                  className="box"
+                  type="button"
+                  onClick={() => setSize("L")}
+                >
                   L
                 </button>
-                <button className="box" onClick={() => setSize("XL")}>
+                <button
+                  className="box"
+                  type="button"
+                  onClick={() => setSize("XL")}
+                >
                   XL
                 </button>
-                <button className="box" onClick={() => setSize("XXL")}>
+                <button
+                  className="box"
+                  type="button"
+                  onClick={() => setSize("XXL")}
+                >
                   XXL
                 </button>
               </div>
