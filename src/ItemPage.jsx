@@ -249,7 +249,10 @@ const ItemPage = (props) => {
       };
       console.log(props.userLogged());
       axios
-        .post("https://clothingbrandbackend.onrender.com/addtoCart", moddedProduct)
+        .post(
+          "https://clothingbrandbackend.onrender.com/addtoCart",
+          moddedProduct
+        )
         .then((result) => console.log(result))
         .catch((err) => console.log(err));
       window.dispatchEvent(new Event("storage1"));
@@ -295,60 +298,60 @@ const ItemPage = (props) => {
             <div className="color-slct">
               <span className="clr-text">SELECT A COLOUR:</span>
               <div className="colours-grid">
-                <div
+                <button
                   className="box"
                   style={{ background: "black" }}
                   onClick={() => setColor("STEEL BLACK")}
-                ></div>
-                <div
+                ></button>
+                <button
                   className="box"
                   style={{ background: "white" }}
                   onClick={() => setColor("SILK WHITE")}
-                ></div>
-                <div
+                ></button>
+                <button
                   className="box"
                   style={{ background: "gray" }}
                   onClick={() => setColor("SILVER GRAY")}
-                ></div>
-                <div
+                ></button>
+                <button
                   className="box"
                   style={{ background: "green" }}
                   onClick={() => setColor("OLIVE GREEN")}
-                ></div>
-                <div
+                ></button>
+                <button
                   className="box"
                   style={{ background: "brown" }}
                   onClick={() => setColor("BURNT UMBER")}
-                ></div>
-                <div
+                ></button>
+                <button
                   className="box"
                   style={{ background: "purple" }}
                   onClick={() => setColor("INDIGO PURPLE")}
-                ></div>
+                ></button>
               </div>
             </div>
 
             <div className="color-slct">
               <span className="clr-text">SELECT A SIZE:</span>
               <div className="colours-grid">
-                <div className="box" onClick={() => setSize("XS")}>
+                <button className="box" onClick={() => setSize("XS")}>
                   XS
-                </div>
-                <div className="box" onClick={() => setSize("S")}>
+                </button>
+                <button className="box" onClick={() => setSize("S")}>
                   S
-                </div>
-                <div className="box" onClick={() => setSize("M")}>
+                </button>
+                <button className="box" onClick={() => setSize("M")}>
                   M
-                </div>
-                <div className="box" onClick={() => setSize("L")}>
+                </button>
+                <button className="box" onClick={() => setSize("L")}>
                   L
-                </div>
-                <div className="box" onClick={() => setSize("XL")}>
+                </button>
+                <button className="box" onClick={() => setSize("XL")}>
                   XL
-                </div>
-                <div className="box" onClick={() => setSize("XXL")}>
+                </button>
+                <button className="box" onClick={() => setSize("XXL")}>
                   XXL
-                </div>
+                </button>
               </div>
             </div>
             <div className="add-btn" onClick={() => AddToCart(itemData)}>
