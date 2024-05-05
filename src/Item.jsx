@@ -203,7 +203,7 @@ const Item = (props) => {
 
   useEffect(() => {
     axios
-      .post("http://localhost:3001/getProducts")
+      .post("https://clothingbrandbackend.onrender.com/getProducts")
       .then((products) => setData(products.data))
       .catch((err) => console.log(err));
   }, []);
