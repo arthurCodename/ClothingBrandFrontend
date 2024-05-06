@@ -340,48 +340,48 @@ const ItemPage = (props) => {
             <div className="color-slct">
               <span className="clr-text">SELECT A SIZE:</span>
               <div className="colours-grid">
-                <input
+                <button
                   className="box"
-                  type="input"
+                  type="text"
                   onClick={() => setSize("XS")}
                 >
                   XS
-                </input>
-                <input
+                </button>
+                <button
                   className="box"
-                  type="input"
+                  type="button"
                   onClick={() => setSize("S")}
                 >
                   S
-                </input>
-                <input
+                </button>
+                <button
                   className="box"
-                  type="input"
+                  type="button"
                   onClick={() => setSize("M")}
                 >
                   M
-                </input>
-                <input
+                </button>
+                <button
                   className="box"
-                  type="input"
+                  type="button"
                   onClick={() => setSize("L")}
                 >
                   L
-                </input>
-                <input
+                </button>
+                <button
                   className="box"
-                  type="input"
+                  type="button"
                   onClick={() => setSize("XL")}
                 >
                   XL
-                </input>
-                <input
+                </button>
+                <button
                   className="box"
-                  type="input"
+                  type="button"
                   onClick={() => setSize("XXL")}
                 >
                   XXL
-                </input>
+                </button>
               </div>
             </div>
             <div className="add-btn" onClick={() => AddToCart(itemData)}>
