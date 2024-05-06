@@ -298,42 +298,42 @@ const ItemPage = (props) => {
             <div className="color-slct">
               <span className="clr-text">SELECT A COLOUR:</span>
               <div className="colours-grid">
-                <input
+                <button
                   className="box"
-                  type="chechbox"
+                  type="button"
                   style={{ background: "black" }}
                   onClick={() => setColor("STEEL BLACK")}
-                ></input>
-                <input
+                ></button>
+                <button
                   className="box"
-                  type="input"
+                  type="button"
                   style={{ background: "white" }}
                   onClick={() => setColor("SILK WHITE")}
-                ></input>
-                <input
+                ></button>
+                <button
                   className="box"
-                  type="chechbox"
+                  type="button"
                   style={{ background: "gray" }}
                   onClick={() => setColor("SILVER GRAY")}
-                ></input>
-                <input
+                ></button>
+                <button
                   className="box"
-                  type="chechbox"
+                  type="button"
                   style={{ background: "green" }}
                   onClick={() => setColor("OLIVE GREEN")}
-                ></input>
-                <input
+                ></button>
+                <button
                   className="box"
-                  type="chechbox"
+                  type="button"
                   style={{ background: "brown" }}
                   onClick={() => setColor("BURNT UMBER")}
-                ></input>
-                <input
+                ></button>
+                <button
                   className="box"
-                  type="chechbox"
+                  type="button"
                   style={{ background: "purple" }}
                   onClick={() => setColor("INDIGO PURPLE")}
-                ></input>
+                ></button>
               </div>
             </div>
 
