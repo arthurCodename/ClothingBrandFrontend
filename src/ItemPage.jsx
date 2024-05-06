@@ -300,7 +300,7 @@ const ItemPage = (props) => {
               <div className="colours-grid">
                 <input
                   className="box"
-                  type="input"
+                  type="chechbox"
                   style={{ background: "black" }}
                   onClick={() => setColor("STEEL BLACK")}
                 ></input>
@@ -312,25 +312,25 @@ const ItemPage = (props) => {
                 ></input>
                 <input
                   className="box"
-                  type="input"
+                  type="chechbox"
                   style={{ background: "gray" }}
                   onClick={() => setColor("SILVER GRAY")}
                 ></input>
                 <input
                   className="box"
-                  type="input"
+                  type="chechbox"
                   style={{ background: "green" }}
                   onClick={() => setColor("OLIVE GREEN")}
                 ></input>
                 <input
                   className="box"
-                  type="input"
+                  type="chechbox"
                   style={{ background: "brown" }}
                   onClick={() => setColor("BURNT UMBER")}
                 ></input>
                 <input
                   className="box"
-                  type="input"
+                  type="chechbox"
                   style={{ background: "purple" }}
                   onClick={() => setColor("INDIGO PURPLE")}
                 ></input>
@@ -342,7 +342,7 @@ const ItemPage = (props) => {
               <div className="colours-grid">
                 <button
                   className="box"
-                  type="text"
+                  type="button"
                   onClick={() => setSize("XS")}
                 >
                   XS
