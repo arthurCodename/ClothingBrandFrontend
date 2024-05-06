@@ -384,10 +384,14 @@ const ItemPage = (props) => {
                 </button>
               </div>
             </div>
-            <div className="add-btn" onClick={() => AddToCart(itemData)}>
+            <button
+              type="submit"
+              className="add-btn"
+              onClick={() => AddToCart(itemData)}
+            >
               <PiShoppingCartSimpleBold />
               ADD TO CART
-            </div>
+            </button>
             <div className="message">{message.length !== 0 ? message : ""}</div>
           </div>
         </div>
