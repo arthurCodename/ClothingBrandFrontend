@@ -305,7 +305,7 @@ const LogInSignUp = (props) => {
                     onChange={(e) => setUserPassword(e.target.value)}
                   />
                 </div>
-                <button className="ctnr-btn" onClick={handleRegSubmit}>
+                <button className="ctnr-btn" onClick={() => handleRegSubmit()}>
                   SIGN UP
                 </button>
 
