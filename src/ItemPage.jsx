@@ -254,6 +254,7 @@ const ItemPage = (props) => {
           moddedProduct
         )
         .then((result) => console.log(result))
+        .then(() => props.showcart())
         .catch((err) => console.log(err));
       window.dispatchEvent(new Event("storage1"));
     } else {
@@ -384,6 +385,7 @@ const ItemPage = (props) => {
                 </button>
               </div>
             </div>
+
             <button
               type="submit"
               className="add-btn"

@@ -182,8 +182,9 @@ const Cart = (props) => {
       axios
         .post("https://clothingbrandbackend.onrender.com/deletefromCart", data)
         .then((result) => console.log(result))
+        .then(() => getAllCartItems())
         .catch((err) => console.log(err));
-      getAllCartItems();
+      // getAllCartItems();
     }
   };
 
@@ -197,8 +198,8 @@ const Cart = (props) => {
             cartitem,
             quantity1
           )
-          .then(() => console.log("hello"));
-        getAllCartItems();
+          .then(() => getAllCartItems());
+        // getAllCartItems();
         return {
           ...cartitem,
           quantity: quantity1,
@@ -211,8 +212,8 @@ const Cart = (props) => {
             cartitem,
             quantity2
           )
-          .then(() => console.log("hello"));
-        getAllCartItems();
+          .then(() => getAllCartItems());
+        // getAllCartItems();
         return {
           ...cartitem,
           quantity: quantity2,
@@ -334,7 +335,7 @@ const Cart = (props) => {
                     <div>{cost ? transNum(cost) : "000"}</div>
                   </div>
                   <div className="ctnr-btn" onClick={getOrder}>
-                    VIEW CAR
+                    MAKE AN ORDER
                   </div>
                 </div>
               ) : (
