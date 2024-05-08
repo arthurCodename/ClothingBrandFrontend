@@ -217,7 +217,10 @@ const LogInSignUp = (props) => {
 
   const handleLogSubmit = async () => {
     await axios
-      .post("https://clothingbrandbackend.onrender.com/logUser", { userEmail, userPassword })
+      .post("https://clothingbrandbackend.onrender.com/logUser", {
+        userEmail,
+        userPassword,
+      })
       .then((user) => setUser(user.data))
 
       .catch((err) => console.log(err));
@@ -252,61 +255,60 @@ const LogInSignUp = (props) => {
             </div>
             {createClicked ? (
               <div className="main-input-fld">
-                <form onSubmit={handleRegSubmit}>
-                  <div className="log-intro-txt">
-                    Please provide us with some additional information.
-                  </div>
-                  <div className="input-fld">
-                    <div>Email address:</div>
-                    <input
-                      type="email"
-                      placeholder=""
-                      onChange={(e) => setUserEmail(e.target.value)}
-                    />
-                  </div>
-                  <div className="input-fld">
-                    <div>First Name:</div>
-                    <input
-                      type="text"
-                      placeholder=""
-                      onChange={(e) => setUserFirstName(e.target.value)}
-                    />
-                  </div>
-                  <div className="input-fld">
-                    <div>Last Name:</div>
-                    <input
-                      type="text"
-                      placeholder=""
-                      onChange={(e) => setUserLastName(e.target.value)}
-                    />
-                  </div>
-                  <div className="input-fld">
-                    <div>Country:</div>
-                    <input
-                      type="text"
-                      placeholder=""
-                      onChange={(e) => setUserCountry(e.target.value)}
-                    />
-                  </div>
-                  <div className="input-fld">
-                    <div>Postal Code / Zip Code:</div>
-                    <input
-                      type="text"
-                      placeholder=""
-                      onChange={(e) => setUserZip(e.target.value)}
-                    />
-                  </div>
-                  <div className="input-fld">
-                    <div type="password">Password:</div>
-                    <input
-                      type="password"
-                      onChange={(e) => setUserPassword(e.target.value)}
-                    />
-                  </div>
-                  <button type="submit" className="ctnr-btn">
-                    SIGN UP
-                  </button>
-                </form>
+                <div className="log-intro-txt">
+                  Please provide us with some additional information.
+                </div>
+                <div className="input-fld">
+                  <div>Email address:</div>
+                  <input
+                    type="email"
+                    placeholder=""
+                    onChange={(e) => setUserEmail(e.target.value)}
+                  />
+                </div>
+                <div className="input-fld">
+                  <div>First Name:</div>
+                  <input
+                    type="text"
+                    placeholder=""
+                    onChange={(e) => setUserFirstName(e.target.value)}
+                  />
+                </div>
+                <div className="input-fld">
+                  <div>Last Name:</div>
+                  <input
+                    type="text"
+                    placeholder=""
+                    onChange={(e) => setUserLastName(e.target.value)}
+                  />
+                </div>
+                <div className="input-fld">
+                  <div>Country:</div>
+                  <input
+                    type="text"
+                    placeholder=""
+                    onChange={(e) => setUserCountry(e.target.value)}
+                  />
+                </div>
+                <div className="input-fld">
+                  <div>Postal Code / Zip Code:</div>
+                  <input
+                    type="text"
+                    placeholder=""
+                    onChange={(e) => setUserZip(e.target.value)}
+                  />
+                </div>
+                <div className="input-fld">
+                  <div type="password">Password:</div>
+                  <input
+                    type="password"
+                    onChange={(e) => setUserPassword(e.target.value)}
+                  />
+                </div>
+                <button className="ctnr-btn" onClick={handleRegSubmit}>
+                  SIGN UP
+                </button>
+
                 <div className="cre-acc-ctnr">
                   <div className="cre-acc-que">
                     Already have an Arc'teryx account?
