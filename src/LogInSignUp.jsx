@@ -213,7 +213,6 @@ const LogInSignUp = (props) => {
       })
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
-    window.location = "/";
   };
 
   const handleLogSubmit = async () => {
