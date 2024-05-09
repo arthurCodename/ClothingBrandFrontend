@@ -255,7 +255,7 @@ const LogInSignUp = (props) => {
             </div>
             {createClicked ? (
               <div className="main-input-fld">
-                <form>
+                <div>
                   <div className="log-intro-txt">
                     Please provide us with some additional information.
                   </div>
@@ -312,7 +312,7 @@ const LogInSignUp = (props) => {
                   >
                     SIGN UP
                   </button>
-                </form>
+                </div>
                 <div className="cre-acc-ctnr">
                   <div className="cre-acc-que">
                     Already have an Arc'teryx account?
