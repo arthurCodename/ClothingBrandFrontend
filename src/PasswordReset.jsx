@@ -22,7 +22,7 @@ const PasswordResetStyles = styled.div`
   .input-fld {
     display: inline-block;
     width: 600px;
-    margin-bottom: 30px;
+    padding-bottom: 30px;
   }
 
   input {
@@ -76,6 +76,45 @@ const PasswordResetStyles = styled.div`
     background-color: black;
     color: white;
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 1000px) {
+    .pswrd-ctnr {
+      padding: 50px 50px;
+    }
+  }
+
+  @media screen and (max-width: 756px) {
+    #reset-txt {
+      font-size: 2rem;
+    }
+
+    .choose-txt-lower {
+      width: 90%;
+    }
+    input {
+      width: 100%;
+    }
+
+    .input-fld {
+      width: 100%;
+    }
+    .pswrd-ctnt {
+      width: 100%;
+    }
+    .ctnr-btn {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 590px) {
+    .input-fld {
+      padding-bottom: 5px;
+    }
+
+    .pswrd-ctnr {
+      padding: 50px 10px;
+    }
   }
 `;
 
