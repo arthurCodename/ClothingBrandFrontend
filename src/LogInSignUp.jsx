@@ -220,6 +220,7 @@ const LogInSignUp = (props) => {
         userPassword,
       })
       .then((result) => console.log(result))
+      .then(() => props.showLog())
       .catch((err) => setErrorMessage(err.response.data.message));
   };
 
@@ -230,6 +231,7 @@ const LogInSignUp = (props) => {
         userPassword,
       })
       .then((user) => setUser(user.data))
+      .then(() => props.showLog())
 
       .catch((err) => setErrorMessage(err.response.data.message));
 
