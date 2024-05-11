@@ -225,14 +225,13 @@ const LogInSignUp = (props) => {
   };
 
   const handleLogSubmit = async () => {
-    await axios
-      .post("https://clothingbrandbackend.onrender.com/logUser", {
-        userEmail,
-        userPassword,
-      })
-      .then((user) => setUser(user.data))
+    await axios.post("https://clothingbrandbackend.onrender.com/logUser", {
+      userEmail,
+      userPassword,
+    });
+    then((user) => setUser(user.data)).catch((err) => console.log(err));
 
-      .catch((err) => setErrorMessage(err.response.data.message));
+    window.location = "/";
 
     // window.location = "/";
   };
