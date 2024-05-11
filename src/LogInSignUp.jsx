@@ -61,7 +61,7 @@ const LogInStyles = styled.div`
 
   .log-intro-txt {
     text-align: center;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
     font-size: 1rem;
   }
 
@@ -123,6 +123,13 @@ const LogInStyles = styled.div`
     margin-bottom: 30px;
     font-size: 16px;
     font-weight: 300;
+  }
+
+  .err-msg {
+    color: red;
+    text-align: center;
+    padding-top: 10px;
+    text-transform: capitalize;
   }
 
   .cre-acc-btn {
@@ -196,6 +203,7 @@ const LogInSignUp = (props) => {
   const [userCountry, setUserCountry] = useState("");
   const [userZip, setUserZip] = useState();
   const [user, setUser] = useState({});
+  const [errorMessage, setErrorMessage] = useState();
 
   const [createClicked, setCreateClicked] = useState(false);
 
@@ -212,7 +220,7 @@ const LogInSignUp = (props) => {
         userPassword,
       })
       .then((result) => console.log(result))
-      .catch((err) => console.log(err));
+      .catch((err) => setErrorMessage(err.response.data.message));
   };
 
   const handleLogSubmit = async () => {
@@ -223,9 +231,9 @@ const LogInSignUp = (props) => {
       })
       .then((user) => setUser(user.data))
 
-      .catch((err) => console.log(err));
+      .catch((err) => setErrorMessage(err.response.data.message));
 
-    window.location = "/";
+    // window.location = "/";
   };
 
   useEffect(() => {
@@ -233,6 +241,7 @@ const LogInSignUp = (props) => {
       localStorage.setItem("user", user.data);
       window.dispatchEvent(new Event("storage"));
     }
+
     console.log(props.userLogged());
   }, [user, props]);
 
@@ -312,6 +321,9 @@ const LogInSignUp = (props) => {
                   >
                     SIGN UP
                   </button>
+                  <div className="err-msg">
+                    {errorMessage ? errorMessage : " "}
+                  </div>
                 </div>
                 <div className="cre-acc-ctnr">
                   <div className="cre-acc-que">
