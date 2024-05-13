@@ -135,16 +135,19 @@ const PasswordReset = () => {
     setToken(params[1]);
   }, []);
 
-  const ChangePassword = () => {
+  const ChangePassword = async () => {
     if (password === confirmPassword) {
       const axiosURL = `https://clothingbrandbackend.onrender.com/password-reset/${userId}/${token}`;
       console.log(axiosURL);
-      axios
+      await axios
         .post(`${axiosURL}`, {
           password,
         })
         .then((res) => console.log(res))
+
         .catch((err) => console.log(err));
+
+      window.location = "/";
     }
   };
 
@@ -160,7 +163,7 @@ const PasswordReset = () => {
             following special characters !, @, #, $, %, ^, &, *
           </div>
           <div className="input-fld">
-            <div>Enter Password</div>
+            <div>Enter Password:</div>
             <input
               type="text"
               placeholder=""

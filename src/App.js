@@ -161,7 +161,7 @@ getStorage()
         <Route path="/admin" element={<AdminPanel {...props}/>}/>
         <Route path="/userProfile" element={<UserProfile {...props}/>}/>
         <Route path="/password-reset/:userId/:token" element={<PasswordReset {...props}/>}/>
-
+        <Route path="/forgotPassword" element={<ResetPassword {...props}/>}/>
       </Routes>
       
       <Footer/>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { IoMdClose } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const LogInStyles = styled.div`
   overflow-x: hidden;
@@ -123,6 +124,15 @@ const LogInStyles = styled.div`
     margin-bottom: 30px;
     font-size: 16px;
     font-weight: 300;
+  }
+  a:link {
+    text-decoration: none;
+  }
+  a:visited {
+    color: black;
+  }
+  a {
+    color: black;
   }
 
   .err-msg {
@@ -360,7 +370,9 @@ const LogInSignUp = (props) => {
                     onChange={(e) => setUserPassword(e.target.value)}
                   />
                   <div>
-                    <i onClick={props.showForgot}>Forgot your password?</i>
+                    <Link to="forgotPassword">
+                      <i>Forgot your password?</i>
+                    </Link>
                   </div>
                 </div>
                 <button
