@@ -119,6 +119,12 @@ const Reset = styled.div`
     .ctnr-btn {
       width: 100%;
     }
+
+    .lower-txt {
+      font-size: 1rem;
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
   }
 
   @media screen and (max-width: 590px) {
