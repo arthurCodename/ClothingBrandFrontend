@@ -371,7 +371,7 @@ const LogInSignUp = (props) => {
                   />
                   <div>
                     <Link to="forgotPassword">
-                      <i>Forgot your password?</i>
+                      <i onClick={props.showLog}>Forgot your password?</i>
                     </Link>
                   </div>
                 </div>
