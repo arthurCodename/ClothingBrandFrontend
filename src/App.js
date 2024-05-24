@@ -47,7 +47,12 @@ function App() {
   const [showUpdate, setShowUpdate] = useState(false)
   const [showCreate, setShowCreate] = useState(false)
   const [showForgot, setShowForgot] = useState(false)
+  const [showCategory, setShowCategory] = useState(false)
   const [user, setUser] = useState({})
+
+  const toggleCategory = () => {
+    setShowCategory(!showCategory)
+  }
 
   const toggleCart = () => {
     setShowCart(!showCart)
@@ -66,6 +71,10 @@ function App() {
 
   const getForgot = () => {
     return showForgot
+  }
+
+  const getCategory = () => {
+    return showCategory
   }
 
   const toggleCreate = () => {
@@ -103,12 +112,14 @@ function App() {
     userLogged: getUser,
     userLogOut: signOutUser,
     isForgot: getForgot,
-    showForgot: toggleForgot
+    showForgot: toggleForgot,
+    isCategory: getCategory,
+    showCategory: toggleCategory
   }
 
   
   useEffect( () => {
-    if (showCart || showLog || showUpdate || showCreate || showForgot){
+    if (showCart || showLog || showUpdate || showCreate || showForgot ){
       document.querySelector('.main-body').classList.add('disable-scroll');
     } else if(!showCart || !showLog || showUpdate || showCreate || showForgot){
     document.querySelector('.main-body').classList.remove('disable-scroll');

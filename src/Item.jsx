@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
+import { IoMdClose } from "react-icons/io";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -19,6 +19,7 @@ const ItemStyles = styled.div`
     display: flex;
     flex-direction: column;
     background-color: white;
+    width: 100vw;
   }
 
   a:link {
@@ -30,9 +31,6 @@ const ItemStyles = styled.div`
     border-radius: 5px;
     box-sizing: border-box;
     text-decoration: none;
-  }
-  .brightness {
-    filter: brightness(50%);
   }
 
   img {
@@ -61,12 +59,14 @@ const ItemStyles = styled.div`
 
   .grid-ctnr {
     background-color: white;
-
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-row-gap: 10px;
     padding-top: 20px;
     text-align: center;
+    padding: 0px 75px;
+    justify-content: ;
   }
 
   .ctnr-btn {
@@ -100,16 +100,18 @@ const ItemStyles = styled.div`
   }
 
   .lower-hr {
-    width: 100%;
     height: 3px;
     background-color: gray;
+    width: 100%;
   }
 
   .categories-ctnr {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    width: 90vw;
+    width: fit-content;
+    padding: 5px 20px;
     font-family: "URW DIN SemiCond", sans-serif;
+    width: 100vw;
   }
 
   /* .categories-pstn {
@@ -118,33 +120,23 @@ const ItemStyles = styled.div`
 
  
   } */
-  @keyframes categorieslide {
-    100% {
-      z-index: 1;
-      height: 220px;
-      overflow: hidden;
-    }
-  }
 
   .categories-mdl {
-    position: absolute;
-    top: 567px;
-    right: 0px;
-    z-index: 0;
     overflow: hidden;
-    animation: categorieslide 1s forwards;
-    height: 0px;
+
     background-color: white;
-    padding: 0px 50px;
-    display: grid;
-    width: 100%;
-    grid-column-gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
+
     font-size: 0.9rem;
     font-family: "URW DIN", sans-serif;
     font-weight: 400;
   }
-
+  .categories-grid {
+    display: grid;
+    width: fit-content;
+    grid-column-gap: 50px;
+    grid-template-columns: auto auto;
+    grid-template-rows: repeat(6, auto);
+  }
   #ctgr-click {
     cursor: pointer;
   }
@@ -152,33 +144,68 @@ const ItemStyles = styled.div`
   .ctgr {
     margin-top: 10px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 3px;
   }
 
-  .lower-brt {
-    filter: brightness(50%);
+  input[type="checkbox"] {
+    color: black;
+    background-color: black;
+    cursor: pointer;
   }
+  label {
+    cursor: pointer;
+  }
+
+  .brightness {
+    filter: brightness(50%);
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+
+  .ctgr-ttl-ctnr {
+    width: 100%;
+    display: flex;
+  }
+
+  @media (max-width: 1710px) {
+    .grid-ctnr {
+      padding: 0 0px;
+    }
+  }
+
   @media (max-width: 1550px) {
     .grid-ctnr {
       grid-template-columns: repeat(3, 1fr);
     }
   }
 
-  @media (max-width: 1366px) {
-    .item-ctnr {
+  @media (max-width: 1350px) {
+    /* .item-ctnr {
       width: 360px;
       padding: 40px;
     }
     .grid-ctnr {
       padding: 20px 75px 50px;
+    } */
+    .grid-ctnr {
+      padding: 0 0px;
     }
   }
+  @media (max-width: 1240px) {
+    .item-ctnr {
+      padding: 20px;
+      width: 340px;
+    }
+  }
+
   @media (max-width: 1050px) {
     .grid-ctnr {
-      padding: 20px 50px 50px;
+      padding: 20px 0px;
     }
     .item-ctnr {
       width: 310px;
-      padding: 5px;
     }
   }
 
@@ -195,15 +222,23 @@ const ItemStyles = styled.div`
 
   @media (max-width: 710px) {
     .item-ctnr {
-      width: 300px;
-      padding: 20px;
+      width: 280px;
+      padding: 10px;
     }
     .grid-ctnr {
-      padding: 25px 10px 50px;
+      padding: 25px 0px;
     }
 
     .item-content {
       font-size: 0.9rem;
+    }
+    .categories-grid {
+      grid-template-columns: auto auto;
+    }
+    .categories-mdl {
+      padding: 0 10px 10px;
+      font-size: 1.1rem;
+      font-weight: 300;
     }
   }
 
@@ -213,11 +248,14 @@ const ItemStyles = styled.div`
       padding: 20px;
     }
     .grid-ctnr {
-      padding: 50px 25px;
+      padding: 25px 25px;
       grid-template-columns: repeat(1, 1fr);
     }
     .item-content {
       font-size: 1rem;
+    }
+    .categories-grid {
+      grid-template-columns: auto;
     }
   }
 
@@ -227,7 +265,7 @@ const ItemStyles = styled.div`
       padding: 0px;
     }
     .grid-ctnr {
-      padding: 50px 10px;
+      padding: 25px 10px;
     }
   }
 `;
@@ -235,7 +273,7 @@ const ItemStyles = styled.div`
 const Item = (props) => {
   const [data, setData] = useState();
   const [showCategories, setShowCategories] = useState(false);
-
+  const [category, setCategory] = useState("");
   const AddToCart = (product) => {
     if (props.isLogged()) {
       console.log("hello from add");
@@ -269,94 +307,199 @@ const Item = (props) => {
   };
 
   useEffect(() => {
-    axios
-      .post("https://clothingbrandbackend.onrender.com/getProducts")
-      .then((products) => setData(products.data))
-      .catch((err) => console.log(err));
+    let ctgr = category;
+    if (category.length === 0 || category === "View All") {
+      axios
+        .post("https://clothingbrandbackend.onrender.com/getProducts")
+        .then((products) => setData(products.data))
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .post("https://clothingbrandbackend.onrender.com/getProductsByTag", {
+          ctgr,
+        })
+        .then((product) => setData(product.data))
 
-    if (showCategories) {
-      document.querySelector(".items-ctnr").classList.add("lower-brt");
+        .catch((err) => console.log(err));
     }
-  }, []);
 
-  const DisplayItems = (ctgr) => {
-    axios
-      .post("https://clothingbrandbackend.onrender.com/getProductsByTag", {
-        ctgr,
-      })
-      .then((product) => setData(product.data))
-      .catch((err) => console.log(err));
-  };
+    console.log(category);
+  }, [category, showCategories]);
+
+  useEffect(() => {
+    if (props.isCategory()) {
+      document.querySelector(".grid-ctnr").classList.add("brightness");
+      // document.querySelector(".items-ctnr").classList.remove("disable-scroll");
+    } else {
+      document.querySelector(".grid-ctnr").classList.remove("brightness");
+    }
+  }, [props]);
 
   return (
     <ItemStyles>
       <div>
-        <div className="items-ctnr">
-          <div className="categories-ctnr">
-            <div
-              id="ctgr-click"
-              onClick={() => setShowCategories(!showCategories)}
-            >
+        <div className="categories-ctnr">
+          <div className="ctgr-ttl-ctnr">
+            <div id="ctgr-click" onClick={() => props.showCategory()}>
               CATEGORIES
             </div>
-            <hr className="lower-hr" />
-            {showCategories ? (
-              <div className="categories-mdl">
-                <div className="clmn1">
-                  <div className="ctgr" onClick={DisplayItems("Packs")}>
-                    Packs
-                  </div>
-                  <div className="ctgr" onClick={DisplayItems("Accessories")}>
-                    Accessories
-                  </div>
-                  <div className="ctgr" onClick={DisplayItems("Shell Jackets")}>
-                    Shell Jackets
-                  </div>
-                  <div
-                    className="ctgr"
-                    onClick={DisplayItems("Insulated Jackets")}
-                  >
-                    Insulated Jackets
-                  </div>
-                  <div
-                    className="ctgr"
-                    onClick={DisplayItems("Shirts and Tops")}
-                  >
-                    Shirts and Tops
-                  </div>
-                  <div className="ctgr" onClick={DisplayItems("Pants")}>
-                    Pants
-                  </div>
-                  <div className="ctgr" onClick={DisplayItems("Fleece")}>
-                    Fleece
-                  </div>
+          </div>
+          <hr className="lower-hr" />
+          {props.isCategory() ? (
+            <div className="categories-mdl">
+              <div className="categories-grid">
+                <div className="ctgr">
+                  <input
+                    type="checkbox"
+                    id="ctgr1"
+                    onClick={() =>
+                      document.getElementById("ctgr1").checked
+                        ? setCategory("Packs")
+                        : setCategory("")
+                    }
+                  />
+                  <label for="ctgr1">Pack</label>
                 </div>
-                <div className="clmn2">
-                  <div className="ctgr" onClick={DisplayItems("Footwear")}>
-                    Footwear
-                  </div>
-                  <div className="ctgr" onClick={DisplayItems("Climbing Gear")}>
-                    Climbing Gear
-                  </div>
-                  <div className="ctgr" onClick={DisplayItems("Base Layer")}>
-                    Base Layer
-                  </div>
-                  <div className="ctgr" onClick={DisplayItems("Shorts")}>
-                    Shorts
-                  </div>
-                  <div
-                    className="ctgr"
-                    onClick={DisplayItems("Apperal Accessories")}
-                  >
-                    Apperal Accessories
-                  </div>
+                <div className="ctgr">
+                  <input
+                    type="checkbox"
+                    id="ctgr2"
+                    onClick={() =>
+                      document.getElementById("ctgr2").checked
+                        ? setCategory("Accessories")
+                        : setCategory("")
+                    }
+                  />
+                  <label for="ctgr2">Accessories</label>
+                </div>
+                <div className="ctgr">
+                  <input
+                    type="checkbox"
+                    id="ctgr3"
+                    onClick={() =>
+                      document.getElementById("ctgr3").checked
+                        ? setCategory("Shell Jackets")
+                        : setCategory("")
+                    }
+                  />
+                  <label for="ctgr3">Shell Jackets</label>
+                </div>
+                <div className="ctgr">
+                  <input
+                    type="checkbox"
+                    id="ctgr4"
+                    onClick={() =>
+                      document.getElementById("ctgr4").checked
+                        ? setCategory("Insulated Jacket")
+                        : setCategory("")
+                    }
+                  />
+                  <label for="ctgr4">Insulated Jacket</label>
+                </div>
+                <div className="ctgr">
+                  <input
+                    type="checkbox"
+                    id="ctgr5"
+                    onClick={() =>
+                      document.getElementById("ctgr5").checked
+                        ? setCategory("Shirt and Tops")
+                        : setCategory("")
+                    }
+                  />
+                  <label for="ctgr5">Shirt and Tops</label>
+                </div>
+                <div className="ctgr">
+                  <input
+                    type="checkbox"
+                    id="ctgr6"
+                    onClick={() =>
+                      document.getElementById("ctgr6").checked
+                        ? setCategory("Pants")
+                        : setCategory("")
+                    }
+                  />
+                  <label for="ctgr6">Pants</label>
+                </div>
+                <div className="ctgr">
+                  <input
+                    type="checkbox"
+                    id="ctgr7"
+                    onClick={() =>
+                      document.getElementById("ctgr7").checked
+                        ? setCategory("Fleece")
+                        : setCategory("")
+                    }
+                  />
+                  <label for="ctgr7">Fleece</label>
+                </div>
+
+                <div className="ctgr">
+                  <input
+                    type="checkbox"
+                    id="ctgr8"
+                    onClick={() =>
+                      document.getElementById("ctgr8").checked
+                        ? setCategory("Footwear")
+                        : setCategory("")
+                    }
+                  />
+                  <label for="ctgr8">Footwear</label>
+                </div>
+                <div className="ctgr">
+                  <input
+                    type="checkbox"
+                    id="ctgr9"
+                    onClick={() =>
+                      document.getElementById("ctgr9").checked
+                        ? setCategory("Climbing Gear")
+                        : setCategory("")
+                    }
+                  />
+                  <label for="ctgr9">Climbing Gear</label>
+                </div>
+                <div className="ctgr">
+                  <input
+                    type="checkbox"
+                    id="ctgr0"
+                    onClick={() =>
+                      document.getElementById("ctgr0").checked
+                        ? setCategory("Base Layer")
+                        : setCategory("")
+                    }
+                  />
+                  <label for="ctgr0">Base Layer</label>
+                </div>
+                <div className="ctgr">
+                  <input
+                    type="checkbox"
+                    id="ctgr10"
+                    onClick={() =>
+                      document.getElementById("ctgr10").checked
+                        ? setCategory("Shorts")
+                        : setCategory("")
+                    }
+                  />
+                  <label for="ctgr10">Shorts</label>
+                </div>
+                <div className="ctgr">
+                  <input
+                    type="checkbox"
+                    id="ctgr11"
+                    onClick={() =>
+                      document.getElementById("ctgr11").checked
+                        ? setCategory("Apperal Accessories")
+                        : setCategory("")
+                    }
+                  />
+                  <label for="ctgr11">Apperal Accessories</label>
                 </div>
               </div>
-            ) : (
-              ""
-            )}
-          </div>
-
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+        <div className="items-ctnr">
           <div className="grid-ctnr">
             {data?.map((product, key) => (
               <Link to={"/itemPage"} key={product.id} className="item">
