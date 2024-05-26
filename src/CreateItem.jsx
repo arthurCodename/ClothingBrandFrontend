@@ -63,7 +63,7 @@ const CreateItemStyles = styled.div`
 
   .log-intro-txt {
     text-align: center;
-    margin-bottom: 60px;
+
     font-size: 1rem;
   }
 
@@ -101,6 +101,10 @@ const CreateItemStyles = styled.div`
     font-size: 1.2rem;
     font-family: "URW DIN", arial, sans-serif;
     font-weight: 500;
+  }
+
+  #desc {
+    border: 1px solid black;
   }
 
   .input-fld > div {
@@ -143,6 +147,7 @@ const CreateItem = (props) => {
     price: null,
     desc: "",
     bigDesc: "",
+    category: "",
   });
 
   const ItemCreate = () => {
@@ -212,6 +217,16 @@ const CreateItem = (props) => {
                     placeholder=""
                     onChange={(e) =>
                       setProduct({ ...product, desc: e.target.value })
+                    }
+                  />
+                </div>
+                <div className="input-fld">
+                  <div>Product Category:</div>
+                  <input
+                    type="text"
+                    placeholder=""
+                    onChange={(e) =>
+                      setProduct({ ...product, category: e.target.value })
                     }
                   />
                 </div>

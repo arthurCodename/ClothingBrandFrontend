@@ -314,7 +314,6 @@ const AdminPanel = (props) => {
               <div className="box" onClick={() => addItem()}>
                 ADD ITEM
               </div>
-              {props.isCreate() ? <CreateItem {...props} /> : <div></div>}
             </div>
           </div>
           <hr />
